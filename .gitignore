@@ -1,0 +1,11 @@
+*.exe
+*.o
+*.obj
+*.pdb
+*.ilk
+*.stackdump
+build/
+.env
+.env.*
+*.key
+*.pem
