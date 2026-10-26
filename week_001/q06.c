@@ -1,6 +1,10 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdio.h>
+#include "com.h"
+
+#define ENCODE_LEN       2
+#define ByteNum     8
 
 int write_be16_at(uint8_t *buffer, size_t length, size_t offset,
                   uint16_t value)
@@ -10,7 +14,22 @@ int write_be16_at(uint8_t *buffer, size_t length, size_t offset,
     (void)length;
     (void)offset;
     (void)value;
-    return -99;
+    uint16_t tempNum;
+    if(buffer != NULL)
+    {
+         /* 检查偏移与剩余空间 */
+        if ((offset > length) || ((length - offset) < ENCODE_LEN))
+        {
+            return -3;
+        }
+        buffer[offset] = (value >> ByteNum) & 0xFF;
+        buffer[offset+1] = (uint8_t)value;
+    }
+    else 
+    {
+        return -1;
+    }
+    return 0;
 }
 
 int main(void)
