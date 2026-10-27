@@ -2,7 +2,7 @@
 
 **题目看每周的 `README.md`，答案写同目录的 `.c` 文件。**
 
-现在从 [第一周题目](week_001/README.md) 开始。这里的 `.c` 文件只是待完成的框架，没有参考答案。
+题目入口：[第一周：指针基础](week_001/README.md) · [第二周：数组、指针与函数传参](week_002/README.md)。新题的 `.c` 文件只提供待完成框架，没有参考答案。
 
 每周题目采用统一格式：题目描述、函数签名、输入/输出/解释示例、提示与约束、补充测试。概念分析题按明确的小问作答。
 
@@ -11,21 +11,21 @@ Embedded-C-Language-Practice/
 ├── README.md               ← 项目说明（本文件）
 ├── .gitignore              ← 排除编译产物
 ├── .vscode/                ← VS Code 编译和调试设置
-└── week_001/
-    ├── README.md           ← 第一周所有题目和自测要求
-    ├── Makefile            ← 第一周编译命令
-    ├── q01.c               ← 你完成 Q1
-    ├── q02.c               ← 你完成 Q2
-    ├── q03.c               ← 你完成 Q3
-    ├── q04.c               ← 你完成 Q4
-    ├── q05.c               ← 你完成 Q5
-    ├── q06.c               ← 你完成 Q6
-    └── challenge.c         ← 你完成综合挑战
+├── week_001/               ← 第一周题目和已有答案
+│   ├── README.md
+│   ├── Makefile
+│   ├── q01.c ～ q06.c
+│   └── challenge.c
+└── week_002/               ← 第二周题目和答题框架
+    ├── README.md           ← 全部题目、示例和约束
+    ├── Makefile            ← 本周独立编译命令
+    ├── q01.c ～ q06.c      ← 六道题的答题文件
+    └── challenge.c         ← 综合挑战
 ```
 
 ## 怎么做一道题
 
-1. 阅读 `week_001/README.md` 中对应的题目。
+1. 阅读对应周的 `README.md`，例如 `week_002/README.md`。
 2. 打开对应 `.c`，实现标有 `TODO` 的函数。
 3. 在该文件的 `main()` 中写自己的测试，例如调用函数、打印结果或使用 `assert()`。
 4. 编译、运行，检查是否符合题目给出的预期。
@@ -34,12 +34,12 @@ Embedded-C-Language-Practice/
 
 ## 编译与运行
 
-你的电脑已有 GCC、GDB 和 `mingw32-make`。在 VS Code 中打开本项目文件夹。
+你的电脑已有 GCC、GDB 和 `mingw32-make`。在 VS Code 中通过英文入口 `E:\Embedded-C-Practice` 打开本项目，兼容旧 GDB 的路径处理。
 
-终端进入第一周目录：
+终端进入对应周目录，以下以第二周为例：
 
 ```powershell
-cd 'E:\数据结构与算法\Embedded-C-Language-Practice\week_001'
+cd 'E:\Embedded-C-Practice\week_002'
 mingw32-make q02
 .\q02.exe
 ```
@@ -74,4 +74,4 @@ gcc -std=c11 -Wall -Wextra -Wpedantic -O0 -g q02.c -o q02.exe
 | W09 | 12/07–12/13 | UART/CAN 协议解析、字节序         |
 | W10 | 12/14–12/20 | 综合项目：纯 C 设备管理框架           |
 
-本次仅重建本地练习框架，尚未提交或推送。正式保存到 GitHub 时，题目保存在 `master`，个人答案与原始提交保存在 `suyu`；审查报告单独保存，不覆盖答案。
+GitHub 分支按既有约定管理：题目保存在 `master`，个人答案与原始提交保存在答题分支；审查报告单独保存，不覆盖答案。新增本地题目和框架后，提交与推送按你的 Git 流程进行。
