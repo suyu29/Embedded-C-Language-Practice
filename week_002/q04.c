@@ -1,7 +1,9 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdio.h>
+#include "com.h"
 
+// capacity是数
 int erase_adc_range(uint16_t *samples, size_t capacity, size_t *inout_count,
                     size_t erase_index, size_t erase_count)
 {
@@ -11,7 +13,21 @@ int erase_adc_range(uint16_t *samples, size_t capacity, size_t *inout_count,
     (void)inout_count;
     (void)erase_index;
     (void)erase_count;
-    return -99;
+
+    if((samples == NULL_PTR) || (inout_count == NULL_PTR))
+    {
+        return -1;
+    }
+    // 擦除范围不合规
+    if(erase_index + 1 + erase_count >= capacity)
+    {
+        return -2;
+    }
+
+    memcpy(&samples[erase_index], &samples[erase_index + erase_count], erase_count); 
+    memset(&samples[erase_index + erase_count], 0, 
+                (capacity - erase_index + erase_count));
+    return 0;
 }
 
 int main(void)
